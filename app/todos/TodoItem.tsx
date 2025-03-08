@@ -1,10 +1,13 @@
 import { Checkbox } from "@/components/ui/checkbox";
+import { TableCell, TableRow } from "@/components/ui/table";
 
 export function TodoItem(props: { title: string }) {
 	return (
-		<div className="flex flex-row items-center w-full p-2">
-			<Checkbox className="w-5 h-5" />
-			<span className="mx-4 w-full overflow-ellipsis">{props.title}</span>
-		</div>
+		<TableRow>
+			<TableCell className="flex flex-row items-center w-full">
+				<Checkbox className="w-5 h-5 transform-[translateY(-2px)]" />
+				<span className="mx-4 w-full overflow-ellipsis">{props.title}</span>
+			</TableCell>
+		</TableRow>
 	);
 }

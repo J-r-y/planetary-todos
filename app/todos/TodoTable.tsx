@@ -1,18 +1,12 @@
 "use client";
 
-import { Input } from "@/components/ui/input";
 import { Table, TableBody, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { ListPlus } from "lucide-react";
 import { FormEvent, useState } from "react";
-import { TodoItem } from "./TodoItem";
+import { AddTodo } from "@/components/todo/AddTodo";
+import { TodoList } from "@/components/todo/TodoList";
 
 export function TodoTable() {
 	const [todos, setTodos] = useState<string[]>([]);
-	// const table = useReactTable({
-	// 	data,
-	// 	columns,
-	// 	getCoreRowModel: getCoreRowModel(),
-	// });
 
 	const submit = (e: FormEvent) => {
 		e.preventDefault();
@@ -28,18 +22,13 @@ export function TodoTable() {
 					<TableRow >
 						<TableHead colSpan={3}>
 							<span className="flex flex-row items-center py-2">
-								<ListPlus className="block ml-1 mr-2" />
-								<form onSubmit={(e) => submit(e)} className="w-full">
-									<Input />
-								</form>
+								<AddTodo submit={(e: FormEvent) => submit(e)} />
 							</span>
 						</TableHead>
 					</TableRow>
 				</TableHeader>
 				<TableBody>
-					{todos.map((todo: string, index: number) => (
-						<TodoItem key={index} title={todo} />
-					))}
+					<TodoList todos={todos} />
 				</TableBody>
 			</Table>
 		</div>
