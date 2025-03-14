@@ -1,0 +1,9 @@
+name = "planetary-todos"
+compatibility_date = "2025-03-13"
+compatibility_flags = [ "nodejs_compat" ]
+pages_build_output_dir = ".vercel/output/static"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "planetary-todos"
+database_id = "6aedf368-3dd3-410b-8636-a2cd89b767dc"
