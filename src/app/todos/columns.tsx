@@ -3,9 +3,11 @@
 import { ColumnDef } from "@tanstack/react-table";
 
 export type Todo = {
-	id: number
+	userId: string
+	todoId: string
 	title: string
-	finished: boolean
+	createdAt: Date
+	completed: boolean
 }
 export const todos: Todo[] = [
 	{

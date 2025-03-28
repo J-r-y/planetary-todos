@@ -1,3 +1,5 @@
+"use server"
+
 import { TodoTable } from "./TodoTable";
 
 export default async function Table() {

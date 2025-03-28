@@ -3,6 +3,9 @@ import { Poppins, Roboto } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./components/theme-provider";
 import { ModeToggle } from "./components/ModeToggle";
+import { AuthButton } from "./components/AuthButton";
+import { auth } from "@/auth";
+import { SessionProvider } from "next-auth/react";
 
 const poppins = Poppins({
 	weight: '400',
@@ -19,11 +22,12 @@ export const metadata: Metadata = {
 	description: "Todo-App with visual rewards for completing",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	const session = await auth()
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<body
@@ -35,8 +39,11 @@ export default function RootLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
-					<ModeToggle />
-					{children}
+					<SessionProvider session={session}>
+						<ModeToggle />
+						<AuthButton />
+						{children}
+					</SessionProvider>
 				</ThemeProvider>
 			</body>
 		</html>

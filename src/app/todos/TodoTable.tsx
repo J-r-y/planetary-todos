@@ -1,18 +1,36 @@
 "use client";
 
 import { Table, TableBody, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { FormEvent, useState } from "react";
-import { AddTodo } from "@/components/todo/AddTodo";
-import { TodoList } from "@/components/todo/TodoList";
+import { FormEvent, useEffect, useState } from "react";
+import { AddTodo } from "./AddTodoButton";
+import { TodoList } from "./TodoList";
+import { useSession } from "next-auth/react";
+import { addTodo, getTodos } from "../actions";
+import { Todo } from "./columns";
 
 export function TodoTable() {
-	const [todos, setTodos] = useState<string[]>([]);
+	const [todos, setTodos] = useState<Todo[]>([])
+	const { data: session } = useSession()
+
+	useEffect(() => {
+		const initTodos = async () => {
+			if (session?.user?.id) {
+				const t = await getTodos(session.user.id)
+				setTodos(t)
+			}
+		}
+		initTodos()
+	}, [session?.user?.id])
 
 	const submit = (e: FormEvent) => {
 		e.preventDefault();
-		const form = e.target as HTMLFormElement;
-		const todo: string = (form.children[0] as HTMLInputElement).value;
-		if (todo.length > 0) setTodos(oldTodos => [todo, ...oldTodos]);
+		if (session?.user?.id) {
+			const form = e.target as HTMLFormElement;
+			const todoTitle: string = (form.children[0] as HTMLInputElement).value;
+			addTodo(session.user.id, todoTitle).then((newTodo) => {
+				setTodos(oldTodos => [newTodo[0], ...oldTodos]);
+			})
+		}
 	}
 
 	return (
