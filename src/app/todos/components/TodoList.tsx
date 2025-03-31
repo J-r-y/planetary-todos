@@ -1,4 +1,3 @@
-import { Todo } from "@/app/todos/components/columns";
 import { TodoItem } from "@/app/todos/components/TodoItem";
 
 export function TodoList({ todos }: { todos: Todo[] }) {

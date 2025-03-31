@@ -2,7 +2,6 @@
 
 import { Checkbox } from "@/components/ui/checkbox";
 import { TableCell, TableRow } from "@/components/ui/table";
-import { Todo } from "./columns";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 import { removeTodo, updateTodo } from "@/app/actions";

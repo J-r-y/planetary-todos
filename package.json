@@ -17,6 +17,7 @@
     "@niledatabase/react": "4.0.0-alpha.10",
     "@niledatabase/server": "4.0.0-alpha.10",
     "@radix-ui/react-checkbox": "^1.1.4",
+    "@radix-ui/react-label": "^2.1.2",
     "@radix-ui/react-slot": "^1.1.2",
     "@supabase/supabase-js": "^2.49.3",
     "@tanstack/react-table": "^8.21.2",
@@ -32,12 +33,14 @@
     "postgres": "^3.4.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-hook-form": "^7.55.0",
     "tailwind-merge": "^3.0.2",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.0",
     "@tailwindcss/postcss": "^4.0.14",
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^20.17.24",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",

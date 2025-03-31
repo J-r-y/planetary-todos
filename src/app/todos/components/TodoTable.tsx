@@ -6,7 +6,6 @@ import { AddTodo } from "./AddTodo";
 import { TodoList } from "./TodoList";
 import { useSession } from "next-auth/react";
 import { addTodo, getTodos } from "@/app/actions";
-import { Todo } from "./columns";
 
 export function TodoTable() {
 	const [todos, setTodos] = useState<Todo[]>([])
