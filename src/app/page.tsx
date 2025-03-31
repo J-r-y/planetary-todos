@@ -1,4 +1,4 @@
-import { TodoTable } from "./todos/TodoTable";
+import { TodoTable } from "./todos/components/TodoTable";
 
 export default async function Home() {
 	return (

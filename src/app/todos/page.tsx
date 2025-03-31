@@ -1,6 +1,6 @@
 "use server"
 
-import { TodoTable } from "./TodoTable";
+import { TodoTable } from "./components/TodoTable";
 
 export default async function Table() {
 
