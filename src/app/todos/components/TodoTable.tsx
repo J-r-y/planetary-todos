@@ -1,25 +1,16 @@
 "use client";
 
 import { Table, TableBody, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { AddTodo } from "./AddTodo";
-import { TodoList } from "./TodoList";
 import { useSession } from "next-auth/react";
-import { addTodo, getTodos } from "@/app/actions";
+import { addTodo } from "@/app/actions";
+import { TodoList } from "./TodoList";
 
-export function TodoTable() {
-	const [todos, setTodos] = useState<Todo[]>([])
+export function TodoTable({ initialTodos }: { initialTodos: Todo[] }) {
+	const [todos, setTodos] = useState<Todo[]>(initialTodos)
 	const { data: session } = useSession()
 
-	useEffect(() => {
-		const initTodos = async () => {
-			if (session?.user?.id) {
-				const t = await getTodos(session.user.id)
-				setTodos(t)
-			}
-		}
-		initTodos()
-	}, [session?.user?.id])
 
 	const submit = (e: FormEvent) => {
 		e.preventDefault();
